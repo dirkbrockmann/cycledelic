@@ -1,9 +1,11 @@
 
 import param from "./parameters.js"
-import {each,range,map,mean} from "lodash-es"
+import {each,range,map,mean,sumBy} from "lodash-es"
 import {rad2deg,deg2rad} from "./utils"
+import  {square as sqlat} from "lattices"
 
-const L = param.L;
+
+const N = param.N;
 const dt = param.dt;
 
 var agents = [];
@@ -13,50 +15,42 @@ const initialize = () => {
 	// set/reset timer
 	param.timer={}; param.tick=0;
 
-	// make agents
+	const s = sqlat(N).boundary("periodic");
 
-	const N = param.number_of_particles.choices[param.number_of_particles.widget.value()];
-	
-	agents = map(range(N), i => { return {
-				index:i, 
-				x:L*Math.random(), 
-				y:L*Math.random(),
-				theta: 2*Math.PI*Math.random(),
-			} 
-	});
+	agents = s.nodes;
+	agents.forEach(a=>{
+		a.u = Math.random(); a.v = Math.random(); a.w = Math.random();
+	});	
 	
 };
 
 const go  = () => {
-	
+		
 	param.tick++;
+	const dt = param.dt;
+	const sigma = param.predation.widget.value();
+	const mu = param.competition.widget.value();
+	const epsilon = param.diffusion.widget.value();
 	
-	each(agents,a=>{
+	each(agents,d=>{
+		d.du = dt * d.u * (sigma * (d.v - d.w) + d.u 
+			- mu * (d.v + d.w) - d.u*d.u) + dt * epsilon * ( sumBy(d.neighbors,x=>x.u-d.u) );			
+		d.dv = dt * d.v * (sigma * (d.w - d.u) + d.v 
+			- mu * (d.u + d.w) - d.v*d.v) + dt * epsilon * ( sumBy(d.neighbors,x=>x.v-d.v) );
+		d.dw = dt * d.w * (sigma * (d.u - d.v) + d.w 
+			- mu * (d.u + d.v) - d.w*d.w) + dt * epsilon * ( sumBy(d.neighbors,x=>x.w-d.w) );
+	});
+	
+	each(agents,d=>{
+		d.u += d.du;
+		d.v += d.dv;
+		d.w += d.dw;
+		if (d.u < 0) {d.u = 0}
+		if (d.v < 0) {d.v = 0}
+		if (d.w < 0) {d.w = 0}
+	});
 		
-		var dx = dt*param.speed.widget.value()*Math.cos(a.theta);
-		var dy = dt*param.speed.widget.value()*Math.sin(a.theta);
-		
-		const x_new = a.x + dx;
-		const y_new = a.y + dy;
-		
-		if (x_new < 0) {dx+=L};
-		if (y_new < 0) {dy+=L};
-		if (x_new > L) {dx-=L};
-		if (y_new > L) {dy-=L};  
-		
-		a.x += dx;
-		a.y += dy;
-		
-		var neighbors = agents.filter(d =>  (d.x-a.x)**2 + (d.y-a.y)**2 <= param.interaction_radius.widget.value()**2 )
-		
-		var mx = mean(map(neighbors,x=> Math.cos(deg2rad(x.theta))));
-		var my = mean(map(neighbors,x=> Math.sin(deg2rad(x.theta))));	
-		
-		a.theta = rad2deg(Math.atan2(my,mx))
-		
-		a.theta += deg2rad(param.wiggle.widget.value())*(Math.random()-0.5)
-		
-	})
+	
 	
 }
 

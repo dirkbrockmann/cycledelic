@@ -1,8 +1,8 @@
 {
-  "name": "@explorables/explorable_template",
-  "title": "Explorable Template",
+  "name": "@explorables/cycledelic",
+  "title": "Cycledelic",
   "version": "1.0.0",
-  "description": "This is a template for making a complexity explorable. The template can be used to create a new complexity explorable. This template implements the Vicsek Model.",
+  "description": "The spatial rock-paper-scissors game - Dynamic pattern formation and spiral waves in a cyclic reaction-diffusion system",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dirkbrockmann/explorable_template.git"
@@ -11,7 +11,7 @@
   "main": "./dist/index.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1",	
     "build": "webpack --mode production ",
     "dev": "webpack serve --static dist/ --mode development",
     "show": "http-server dist -o"
@@ -25,6 +25,7 @@
   "dependencies": {
     "d3": "^7.8.2",
     "d3-widgets": "^1.0.16",
+    "lattices": "^1.0.12",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {

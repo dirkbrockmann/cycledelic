@@ -1,49 +1,59 @@
 import * as d3 from "d3"
 import param from "./parameters.js"
 import {agents} from "./model.js"
-
-const L = param.L;
-const X = d3.scaleLinear().domain([0,L]);
-const Y = d3.scaleLinear().domain([0,L]);
+import cfg from "./config.js"
 
 
-const update = (display) => {
+const N = param.N;
+const ds = 1.0/(2*N+1);
+
+const X = d3.scaleLinear().domain([-0.5,0.5]);
+const Y = d3.scaleLinear().domain([-0.5,0.5]);
+var ctx,dL,W,H;
+
+
+
+
+const go =  (display,config) => {
+	ctx.clearRect(0, 0, W, H);
+	ctx.strokeStyle = "black";
+	ctx.strokeRect(0, 0, config.display_size.width, config.display_size.height);		
+
+	agents.forEach(d=>{
+		const c = d.cell();
+		const r = Math.floor(255*(param.show_species_1.widget.value()?d.u:0));
+		const g = Math.floor(255*(param.show_species_2.widget.value()?d.v:0));
+		const b = Math.floor(255*(param.show_species_3.widget.value()?d.w:0));
+
+		ctx.fillStyle=
+			"rgb("+r+","+g+","+b+")";
+		ctx.fillRect(X(c[2].x), Y(c[2].y), (X(c[0].x)-X(c[2].x)), (Y(c[0].y)-Y(c[2].y)));
+	})
 	
-	display.selectAll(".node")
-		.style("fill", d => param.color_by_heading.widget.value() ? d3.interpolateSinebow(d.theta/2/Math.PI)  : "black")
-	
+	ctx.strokeStyle = "black";
+	ctx.strokeRect(0, 0, config.display_size.width, config.display_size.height);		
+}
+
+const update = (display,config) => {
+	go (display,config);		
 }
 
 const initialize = (display,config) => {
 
-	const W = config.display_size.width;
-	const H = config.display_size.height;
+	W = config.display_size.width;
+	H = config.display_size.height;
 	
+	dL = ds*W;
+		
 	X.range([0,W]);
 	Y.range([0,H]);
-		
-	display.selectAll("#origin").remove();
-	display.selectAll(".node").remove();
 	
-	const origin = display.append("g").attr("id","origin")
+	ctx = display.node().getContext('2d');
 	
-	origin.selectAll(".node").data(agents).enter().append("circle")
-		.attr("class","node")
-		.attr("cx",d=>X(d.x))
-		.attr("cy",d=>Y(d.y))
-		.attr("r",X(param.agentsize/2))
-		.style("fill", d => param.color_by_heading.widget.value() ? d3.interpolateSinebow(d.theta/2/Math.PI)  : "black")
-	
+	go (display,config);
 };
+	
 
-const go = (display) => {
-	
-	display.selectAll(".node")
-		.attr("cx",d=>X(d.x))
-		.attr("cy",d=>Y(d.y))
-		.style("fill", d => param.color_by_heading.widget.value() ? d3.interpolateSinebow(d.theta/2/Math.PI)  : "black")
-	
-}
 
 
 export {initialize,go,update}

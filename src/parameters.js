@@ -1,26 +1,26 @@
 export default {
-		dt:1,
-		L:100,
-		agentsize: 1.0,
-	
-		speed: {
-			range:[0,1],
-			default:0.2
+		dt:0.1,
+		N:50,
+		predation: {
+			range:[0,3],
+			default:2
 		},
-		wiggle: {
-			range:[0,180],
-			default:50
+		competition: {
+			range:[0,3],
+		default:1.5
 		},
-		interaction_radius:{
-			range : [0,5],
-			default : 3
+		diffusion:{
+			range : [0,.1],
+			default : 0.05
 		},
-		number_of_particles : {
-			choices:[50,100,200,400],
-		default:2
+		show_species_1: {
+			default:true
 		},
-		color_by_heading: {
-			default: true
+		show_species_2: {
+			default:true
+		},
+		show_species_3: {
+			default:true
 		}
 }
 
