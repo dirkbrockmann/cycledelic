@@ -1,4 +1,4 @@
-import * as d3 from "d3"
+import {scaleLinear} from "d3"
 import param from "./parameters.js"
 import {agents} from "./model.js"
 import cfg from "./config.js"
@@ -7,8 +7,8 @@ import cfg from "./config.js"
 const N = param.N;
 const ds = 1.0/(2*N+1);
 
-const X = d3.scaleLinear().domain([-0.5,0.5]);
-const Y = d3.scaleLinear().domain([-0.5,0.5]);
+const X = scaleLinear().domain([-0.5,0.5]);
+const Y = scaleLinear().domain([-0.5,0.5]);
 var ctx,dL,W,H;
 
 

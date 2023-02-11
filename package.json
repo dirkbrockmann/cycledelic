@@ -2,10 +2,11 @@
   "name": "@explorables/cycledelic",
   "title": "Cycledelic",
   "version": "1.0.0",
+  "license": "CC-BY-4.0",
   "description": "The spatial rock-paper-scissors game - Dynamic pattern formation and spiral waves in a cyclic reaction-diffusion system",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dirkbrockmann/explorable_template.git"
+    "url": "git+https://github.com/dirkbrockmann/cycledelic.git"
   },
   "author": "Dirk Brockmann (https://rocs.hu-berlin.de)",
   "main": "./dist/index.js",

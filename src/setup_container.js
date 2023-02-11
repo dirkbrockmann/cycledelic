@@ -1,4 +1,4 @@
-import * as d3 from "d3"
+import {select} from "d3"
 import * as widgets from "d3-widgets"
 
 export default (container_id,config)=>{
@@ -10,7 +10,7 @@ export default (container_id,config)=>{
 			config.controls_grid.ny
 		);
 
-	const container = d3.select("#"+container_id).classed(config.container_class,true);
+	const container = select("#"+container_id).classed(config.container_class,true);
 
 	const display = container.append("div")
 		.attr("id","display")
