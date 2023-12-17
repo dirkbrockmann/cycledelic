@@ -1,7 +1,7 @@
 {
   "name": "@explorables/cycledelic",
   "title": "Cycledelic",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "CC-BY-4.0",
   "description": "The spatial rock-paper-scissors game - Dynamic pattern formation and spiral waves in a cyclic reaction-diffusion system",
   "repository": {
