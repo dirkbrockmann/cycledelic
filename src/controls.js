@@ -37,8 +37,6 @@ const sliders = map(va,
 add_widget(bo,toggles);
 add_widget(va,sliders);
 
-console.log(bo)
-
 const go = widgets.button().actions(["play","pause"])
 const setup = widgets.button().actions(["back"])
 const reset = widgets.button().actions(["rewind"])

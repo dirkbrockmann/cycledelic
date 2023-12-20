@@ -1,8 +1,8 @@
 export default {
 	display_type:"canvas", // {svg{canvas}}
 	debug:false, 
-	controls_border:false,
-	display_border:true,
+	controls_border:"",
+	display_border:"1px solid black",
 	debug_lattice:"debug-grid-16",
 	controls_grid:{nx:12,ny:12},
 	display_size: {width:505,height:505},

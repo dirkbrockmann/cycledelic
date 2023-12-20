@@ -15,6 +15,7 @@ module.exports = {
       new HtmlWebpackPlugin({
 		inject:'head' ,
         title: meta.title,
+		  subtitle: meta.subtitle,
 		library: name,
   		template: './src/index.html',
   		anchor: name+"_container",
