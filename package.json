@@ -2,7 +2,7 @@
   "name": "@explorables/cycledelic",
   "title": "Cycledelic",
   "subtitle":"The spatial rock-paper-scissors game",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "CC-BY-4.0",
   "description": "The explorable illustrates dynamic pattern formation and spiral waves in a cyclic reaction-diffusion system. In the model three species prey on each other in a cyclic way, A eating B, B eating C, and C eating A.",
   "repository": {

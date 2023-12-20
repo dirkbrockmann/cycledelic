@@ -1,4 +1,5 @@
 export default {
+	id:"cycledelic",
 	display_type:"canvas", // {svg{canvas}}
 	debug:false, 
 	controls_border:"",
