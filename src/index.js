@@ -12,15 +12,11 @@ var display,controls,grid;
 
 const load = function (container_id,config=cfg) {
 	
-// setting up the container
-	
 	const container = setup_container(container_id,config);
 
 	display = container.display;
 	controls = container.controls;
 	grid = container.grid;
-		
-
 	
 	setup_controls(controls,grid); 
 	

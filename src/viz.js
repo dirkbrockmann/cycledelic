@@ -16,8 +16,8 @@ var ctx,dL,W,H;
 
 const go =  (display,config) => {
 	ctx.clearRect(0, 0, W, H);
-	ctx.strokeStyle = "black";
-	ctx.strokeRect(0, 0, config.display_size.width, config.display_size.height);		
+//	ctx.strokeStyle = "black";
+//	ctx.strokeRect(0, 0, config.display_size.width, config.display_size.height);		
 
 	agents.forEach(d=>{
 		const c = d.cell();
