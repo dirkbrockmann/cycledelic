@@ -19,7 +19,7 @@ const sliders = map(va,
 					.value(v.default)
 					.girth(cfg.widgets.slider_girth)
                     .knob(cfg.widgets.slider_knob)
-                    .fontsize(cfg.widgets.fontsize)
+                   // .fontsize(cfg.widgets.fontsize)
 					.size(cfg.widgets.slider_size)
 		);
 
@@ -28,7 +28,7 @@ const sliders = map(va,
 					.id(v.id)
 					.label(v.label)
 					.value(v.default)
-	                     .fontsize(cfg.widgets.fontsize)
+	                    // .fontsize(cfg.widgets.fontsize)
 	 				.labelposition(cfg.widgets.toggle_label_pos)
 		);
 		

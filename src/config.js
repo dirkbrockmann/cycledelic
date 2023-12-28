@@ -1,6 +1,6 @@
 export default { 
 	widgets:{
-		fontsize:20,
+		//fontsize:20,
 		slider_size: 400,
 		slider_show: true,
 		slider_girth: 16,

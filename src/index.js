@@ -1,4 +1,5 @@
-import './styles.css'
+import  'tachyons/css/tachyons.min.css'
+
 import cfg from "./container_config.js"
 import setup_container from "./setup_container.js"
 import setup_interactions from "./setup_interactions.js"
