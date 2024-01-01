@@ -19,7 +19,6 @@ const sliders = map(va,
 					.value(v.default)
 					.girth(cfg.widgets.slider_girth)
                     .knob(cfg.widgets.slider_knob)
-                   // .fontsize(cfg.widgets.fontsize)
 					.size(cfg.widgets.slider_size)
 		);
 
@@ -28,7 +27,6 @@ const sliders = map(va,
 					.id(v.id)
 					.label(v.label)
 					.value(v.default)
-	                    // .fontsize(cfg.widgets.fontsize)
 	 				.labelposition(cfg.widgets.toggle_label_pos)
 		);
 		
@@ -63,9 +61,9 @@ export default (controls,grid)=>{
 	setup.position(grid.position(cfg.widgets.resetbutton_anchor.x,cfg.widgets.resetbutton_anchor.y));
 	
 
-	controls.selectAll(".slider").data(sliders).enter().append(widgets.widget);
-	controls.selectAll(".toggle").data(toggles).enter().append(widgets.widget);
-	controls.selectAll(".button").data(buttons).enter().append(widgets.widget);
+	controls.selectAll(null).data(sliders).enter().append(widgets.widget);
+	controls.selectAll(null).data(toggles).enter().append(widgets.widget);
+	controls.selectAll(null).data(buttons).enter().append(widgets.widget);
 
 }
 

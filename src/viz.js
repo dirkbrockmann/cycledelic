@@ -11,13 +11,8 @@ const X = scaleLinear().domain([-0.5,0.5]);
 const Y = scaleLinear().domain([-0.5,0.5]);
 var ctx,dL,W,H;
 
-
-
-
 const go =  (display,config) => {
 	ctx.clearRect(0, 0, W, H);
-//	ctx.strokeStyle = "black";
-//	ctx.strokeRect(0, 0, config.display_size.width, config.display_size.height);		
 
 	agents.forEach(d=>{
 		const c = d.cell();
@@ -30,8 +25,6 @@ const go =  (display,config) => {
 		ctx.fillRect(X(c[2].x), Y(c[2].y), (X(c[0].x)-X(c[2].x)), (Y(c[0].y)-Y(c[2].y)));
 	})
 	
-	ctx.strokeStyle = "black";
-	ctx.strokeRect(0, 0, config.display_size.width, config.display_size.height);		
 }
 
 const update = (display,config) => {
