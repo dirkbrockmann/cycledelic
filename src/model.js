@@ -1,7 +1,6 @@
 
 import param from "./parameters.js"
 import {each,range,map,mean,sumBy} from "lodash-es"
-import {rad2deg,deg2rad} from "./utils"
 import  {square as sqlat} from "lattices"
 
 
