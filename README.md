@@ -8,7 +8,7 @@
 
 The explorable illustrates dynamic pattern formation and spiral waves in a cyclic reaction-diffusion system. In the model three species prey on each other in a cyclic way, A eating B, B eating C, and C eating A.
 
-The explorable is part of the [**Complexity Exporables Collection**](https://www.complexity-explorables.org). For more information about the system and its behavior consult the explorable
+The explorable is part of the [**Complexity Explorables Collection**](https://www.complexity-explorables.org). For more information about the system and its behavior consult the explorable
 > [**“Cycledelic” - The spatial rock-paper-scissors game**](https://www.complexity-explorables.org/explorables/cycledelic)
 
 ## Usage & Installation
@@ -24,8 +24,11 @@ If you want to run a local copy without having to rely on the nasty internet, th
 is to install it via `npm`:
 
 ```shell
+mkdir cycledelic
+cd cycledelic
+npm init -y
 npm install @explorables/cycledelic
-open node_modules/@explorables/cycledelic/dist/index.html 
+npx http-server node_modules/@explorables/cycledelic/dist/ 
 ```
 
 ### Embedding the explorable in your site
